@@ -15,13 +15,24 @@ import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { handleEmailInputChange } from "../../utils/validateFunctions";
 import { useGlobalContext } from "../../contexts/AuthProvider/useGlobalContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { loginMutation } = useGlobalContext();
+  const {
+    loginMutation,
+    isError,
+    setIsError,
+    // error,
+    // setError,
+    isSuccess,
+    isAuthenticated,
+    accessToken,
+    firstAccessToken,
+  } = useGlobalContext();
   const HandleLogin = (event: React.FormEvent<HTMLDivElement>) => {
     event.preventDefault();
 
-    return loginMutation({ email: email, password: password });
+    return loginMutation({ identifier: email, password: password });
   };
 
   const [email, setEmail] = useState("");
@@ -36,6 +47,20 @@ function Login() {
       setDisableButton(true);
     }
   }, [password, email]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isError) {
+      // toast.error(error);
+
+      setIsError(false);
+    }
+
+    if (isSuccess) {
+      if (accessToken && isAuthenticated()) {
+        navigate("/cms/home");
+      }
+    }
+  }, [isError, isSuccess, accessToken, firstAccessToken]);
 
   const handleButton = (event: any) => {
     event.preventDefault();
@@ -88,7 +113,7 @@ function Login() {
                 value={email}
                 autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
-                label={"E-mail"}
+                label={"CPF"}
                 onBlur={(e: any) =>
                   handleEmailInputChange(e, seterrorInput, "email")
                 }

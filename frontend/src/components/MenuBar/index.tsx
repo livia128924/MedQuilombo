@@ -52,7 +52,7 @@ function MenuBar() {
     localStorage.removeItem("user");
     localStorage.removeItem("unexpectedError");
     navigate("/");
-    toast.success("", {
+    toast.success("User deslogado com sucesso1", {
       style: { width: "350px", height: "23px" },
     });
   };

@@ -32,6 +32,7 @@ export const FilterContent = styled.div`
 `;
 export const ButtonContent = styled.div`
   display: flex;
+  justify-content: flex-end;
 `;
 
 export const FormContent = styled.div`
