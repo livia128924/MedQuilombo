@@ -12,6 +12,8 @@ import {
   DougnutItem,
   GeralCount,
   LineCardsContent,
+  LineInfoCardsContent,
+  ListNames,
 } from "./styles";
 import {
   Chart as ChartJS,
@@ -27,8 +29,10 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import {
+  dataComunityLine,
   dataDoughnut,
   dataLine,
+  dataListaNomes,
   dataRecentDoughnut,
   dataRiskDoughnut,
 } from "./ChartData";
@@ -136,6 +140,50 @@ function Home() {
             </div>
           </CardItem>
         </LineCardsContent>
+        <LineInfoCardsContent>
+          <CardItem style={{ flex: 2.9 }}>
+            <div style={{ width: "100%" }}>
+              <Line
+                id="chartLine2"
+                options={{
+                  responsive: true,
+                  interaction: {
+                    mode: "index",
+                    intersect: false,
+                  },
+
+                  maintainAspectRatio: false,
+                  aspectRatio: 5 / 3,
+                  plugins: {
+                    legend: {
+                      position: "bottom" as const,
+                      labels: {
+                        usePointStyle: true,
+                        pointStyle: "cicle",
+                      },
+                    },
+                    title: {
+                      display: false,
+                    },
+                  },
+                }}
+                data={dataComunityLine}
+                width={"100%"}
+                height={250}
+              />
+            </div>
+          </CardItem>
+          <CardItem style={{ width: "5%", flexDirection: "column" }}>
+            <div> Lista de Pacientes Recentes por Comunidade</div>
+            <ListNames>
+              {dataListaNomes.map((item) => (
+                <div style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+                  <div>{item.name}</div> -<div>{item.comunity}</div>
+                </div>
+              ))}
+            </ListNames>
+          </CardItem>
+        </LineInfoCardsContent>
       </DashboardContent>
     </ContainerBase>
   );

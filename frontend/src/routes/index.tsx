@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import MenuBar from "../components/MenuBar";
+import Patient from "../pages/Patient";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
         path: "home",
 
         element: <Home />,
+      },
+      {
+        path: "patient",
+
+        element: <Patient />,
       },
     ],
   },

@@ -59,3 +59,51 @@ export const dataLine = {
     },
   ],
 };
+const comunidadesQuilombolas = [
+  "Kalunga",
+  "Caiana dos Crioulos",
+  "Vão de Almas",
+  "Mocambo",
+  "Saco do Curtume",
+  "São Pedro",
+  "Tapuio",
+  "Rio das Rãs",
+  "Bombas",
+  "Baía Formosa",
+  "Cruzeiro",
+  "Riacho do Meio",
+  "São José da Serra",
+  "Galvão",
+  "Jatobá",
+  "Caiçara",
+  "Palmares",
+  "Lagoa das Piranhas",
+  "Pedra Branca",
+  "Terra Seca",
+];
+
+export const dataComunityLine = {
+  labels: comunidadesQuilombolas,
+
+  datasets: [
+    {
+      label: "Casos por comunidades",
+      data: [
+        159, 126, 116, 65, 38, 151, 135, 180, 64, 116, 134, 103, 20, 27, 118,
+        49, 191, 127, 77, 96,
+      ],
+      fill: false,
+      borderColor: "#FF5B5B",
+
+      tension: 0.4,
+    },
+  ],
+};
+
+export const dataListaNomes = comunidadesQuilombolas.map(
+  (comunidade, index) => ({
+    name: `name ${index + 1}`,
+    comunity: comunidade,
+    id: `${index + 1}`,
+  })
+);

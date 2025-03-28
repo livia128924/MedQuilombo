@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from "styled-components";
 
 export const DashboardContent = styled.div`
@@ -16,18 +17,23 @@ export const CardsGeral = styled.div`
   gap: 20px;
   overflow-y: auto;
   padding: 10px;
-  background-color: #c67878;
+  background-color: #ffffff;
+  justify-content: space-between; /* Distribui os itens igualmente */
 `;
 export const CardItem = styled.div`
   background-color: white;
   box-shadow: 0px 4px 6px 0px #00000040;
   border-radius: 14px;
   padding: 30px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 200px;
   display: flex;
   flex-direction: row;
   gap: 20px;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
 `;
 export const GeralCount = styled.div`
   display: flex;
@@ -42,12 +48,28 @@ export const GeralCount = styled.div`
   }
 `;
 export const LineCardsContent = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 20px;
-  flex-wrap: wrap;
-  width: 100%;
+
   padding: 10px;
+  background-color: #ffffff;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+export const LineInfoCardsContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const DougnutItem = styled.div`
@@ -58,4 +80,14 @@ export const DougnutItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const ListNames = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  height: 300px;
+  overflow-y: auto;
 `;
